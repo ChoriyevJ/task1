@@ -23,9 +23,13 @@ class Message(BaseModel):
         return f"{self.sender.username} {self.text}"
 
 
-# class Chat(BaseModel):
-#
-#
+
+class Contact(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name='contact_friends')
+    friends = models.ManyToManyField(User, related_name='contacts')
+
+
 class Chat(BaseModel):
     messages = models.ManyToManyField(Message, related_name='chats', blank=True)
     is_notificate = models.BooleanField(default=True)

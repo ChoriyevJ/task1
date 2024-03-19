@@ -4,5 +4,5 @@ from chat import views
 
 
 urlpatterns = [
-    path('chat/', views.ChatListAPI.as_view())
+    path('chat/list/', views.ChatListAPI.as_view())
 ]
